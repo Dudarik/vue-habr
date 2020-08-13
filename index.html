@@ -11,28 +11,33 @@
 <body>
   <div id="app">
     <div class="product">
-
       <div class="product-image">
-        <img :src="image" :alt="altText" />
+        <img :src="image" />
       </div>
 
       <div class="product-info">
-
+        <div class="cart">
+          <p>Cart({{ cart }})</p>
+        </div>
         <h1>{{ product }}</h1>
         <p v-if="inStock">In stock</p>
         <p v-else>Out of Stock</p>
-        <ul>
-          <li v-for="item in details">
-            {{ item }}</li>
-        </ul>
 
-        <div v-for="v in variants" :key="v.variantId">
-          <p>{{ v.variantColor }}</p>
+        <ul>
+          <li v-for="detail in details">{{ detail }}</li>
+        </ul>
+        <div v-for="variant in variants" :key="variant.variantId">
+          <p @mouseover = "updateProduct(variant.variantImage)">
+            {{ variant.variantColor }}
+          </p>
         </div>
+
+        <button @click="addToCart">Add to cart</button>
 
       </div>
     </div>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="main.js"></script>
 </body>

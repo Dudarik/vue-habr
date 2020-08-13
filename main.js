@@ -5,17 +5,27 @@ let app = new Vue({
     image: "./assets/vmSocks-green-onWhite.jpg",
     altText: "A pair of socks",
     inStock: true,
-    onSale: true,
+    cart: 0,    
     details: ['80% cotton', '20% polyester', 'Gender-neutral'],
     variants: [
       {
         variantId: 2234,
-        variantColor: 'green'
+        variantColor: 'green',
+        variantImage: "./assets/vmSocks-green-onWhite.jpg"
       },
       {
         variantId: 2235,
-        variantColor: 'blue'
+        variantColor: 'blue',
+        variantImage: "./assets/vmSocks-blue-onWhite.jpg"
       },
     ]
-  }
+  },
+  methods: {
+    addToCart () {
+      this.cart++
+    },
+    updateProduct (variantImage) {
+      this.image = variantImage
+    }
+  },
 })
